@@ -69,17 +69,6 @@ class ClientChooserButton extends StatelessWidget {
           ],
         ),
       ),
-      if (Matrix.of(context).backgroundPush?.firebaseEnabled != true)
-        PopupMenuItem(
-          value: SettingsAction.support,
-          child: Row(
-            children: [
-              const Icon(Icons.favorite, color: Colors.red),
-              const SizedBox(width: 18),
-              Text(L10n.of(context).donate),
-            ],
-          ),
-        ),
       PopupMenuItem(
         value: SettingsAction.settings,
         child: Row(

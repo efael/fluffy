@@ -17,7 +17,7 @@ enum AppSettings<T> {
   audioRecordingNoiseSuppress<bool>('audioRecordingNoiseSuppress', true),
   audioRecordingBitRate<int>('audioRecordingBitRate', 64000),
   audioRecordingSamplingRate<int>('audioRecordingSamplingRate', 44100),
-  showNoGoogle<bool>('chat.fluffy.show_no_google', false),
+  showNoGoogle<bool>('chat.fluffy.show_no_google', true),
   unifiedPushRegistered<bool>('chat.fluffy.unifiedpush.registered', false),
   unifiedPushEndpoint<String>('chat.fluffy.unifiedpush.endpoint', ''),
   pushNotificationsGatewayUrl<String>(
@@ -30,7 +30,7 @@ enum AppSettings<T> {
   ),
   renderHtml<bool>('chat.fluffy.renderHtml', true),
   fontSizeFactor<double>('chat.fluffy.font_size_factor', 1.0),
-  hideRedactedEvents<bool>('chat.fluffy.hideRedactedEvents', false),
+  hideRedactedEvents<bool>('chat.fluffy.hideRedactedEvents', true),
   hideUnknownEvents<bool>('chat.fluffy.hideUnknownEvents', true),
   separateChatTypes<bool>('chat.fluffy.separateChatTypes', false),
   autoplayImages<bool>('chat.fluffy.autoplay_images', true),
@@ -40,7 +40,7 @@ enum AppSettings<T> {
   sendOnEnter<bool>('chat.fluffy.send_on_enter', false),
   showPresences<bool>('chat.fluffy.show_presences', true),
   displayNavigationRail<bool>('chat.fluffy.display_navigation_rail', false),
-  experimentalVoip<bool>('chat.fluffy.experimental_voip', false),
+  experimentalVoip<bool>('chat.fluffy.experimental_voip', true),
   shareKeysWith<String>('chat.fluffy.share_keys_with_2', 'all'),
   noEncryptionWarningShown<bool>(
     'chat.fluffy.no_encryption_warning_shown',
@@ -51,12 +51,12 @@ enum AppSettings<T> {
     false,
   ),
   // AppConfig-mirrored settings
-  applicationName<String>('chat.fluffy.application_name', 'FluffyChat'),
-  defaultHomeserver<String>('chat.fluffy.default_homeserver', 'matrix.org'),
+  applicationName<String>('chat.fluffy.application_name', 'Efael'),
+  defaultHomeserver<String>('chat.fluffy.default_homeserver', 'efael.uz'),
   // colorSchemeSeed stored as ARGB int
   colorSchemeSeedInt<int>(
     'chat.fluffy.color_scheme_seed',
-    0xFF5625BA,
+    0xFF007080,
   ),
   enableSoftLogout<bool>('chat.fluffy.enable_soft_logout', false);
 

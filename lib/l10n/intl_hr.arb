@@ -807,7 +807,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "fluffychat": "FluffyChat",
+    "fluffychat": "Efael",
     "@fluffychat": {
         "type": "String",
         "placeholders": {}
@@ -979,7 +979,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "inviteText": "{username} te je pozvao/la u FluffyChat. \n1. Posjeti strnicu fluffychat.im i instaliraj aplikaciju \n2. Registriraj ili prijavi se \n3. Otvori poveznicu poziva: \n {link}",
+    "inviteText": "{username} te je pozvao/la u Efael. \n1. Posjeti strnicu efael.uz i instaliraj aplikaciju \n2. Registriraj ili prijavi se \n3. Otvori poveznicu poziva: \n {link}",
     "@inviteText": {
         "type": "String",
         "placeholders": {
@@ -1731,7 +1731,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "title": "FluffyChat",
+    "title": "Efael",
     "@title": {
         "description": "Title for the application",
         "type": "String",
@@ -2220,7 +2220,7 @@
     "@dehydrateTor": {},
     "emojis": "Emojiji",
     "@emojis": {},
-    "indexedDbErrorLong": "Spremište poruka nažalost nije standarno uključena u privatnom modusu.\nOtvori stranicu\n - about:config\n - postavi dom.indexedDB.privateBrowsing.enabled na true\nFluffyChat se inače neće moći pokrenuti.",
+    "indexedDbErrorLong": "Spremište poruka nažalost nije standarno uključena u privatnom modusu.\nOtvori stranicu\n - about:config\n - postavi dom.indexedDB.privateBrowsing.enabled na true\nEfael se inače neće moći pokrenuti.",
     "@indexedDbErrorLong": {},
     "storeSecurlyOnThisDevice": "Spremi sigurno na ovom uređaju",
     "@storeSecurlyOnThisDevice": {},
@@ -2439,7 +2439,7 @@
     "@enterRoom": {},
     "screenSharingDetail": "Dijeliš svoj ekran u FuffyChatu",
     "@screenSharingDetail": {},
-    "appearOnTopDetails": "Omogućuje prikaz aplikacije ispred drugih (nije potrebno ako je FluffyChat već postavljen kao račun za pozivanje)",
+    "appearOnTopDetails": "Omogućuje prikaz aplikacije ispred drugih (nije potrebno ako je Efael već postavljen kao račun za pozivanje)",
     "@appearOnTopDetails": {},
     "appearOnTop": "Prikaz ispred drugih",
     "@appearOnTop": {},
@@ -2449,7 +2449,7 @@
     "@allSpaces": {},
     "screenSharingTitle": "dijeljenje ekrana",
     "@screenSharingTitle": {},
-    "otherCallingPermissions": "Mikrofon, kamera i druge FluffyChat dozvole",
+    "otherCallingPermissions": "Mikrofon, kamera i druge Efael dozvole",
     "@otherCallingPermissions": {},
     "enterSpace": "Uđi u prostor",
     "@enterSpace": {},

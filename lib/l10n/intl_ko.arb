@@ -143,7 +143,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "fluffychat": "FluffyChat",
+    "fluffychat": "Efael",
     "@fluffychat": {
         "type": "String",
         "placeholders": {}
@@ -1441,7 +1441,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "title": "FluffyChat",
+    "title": "Efael",
     "@title": {
         "description": "Title for the application",
         "type": "String",
@@ -1867,7 +1867,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "inviteText": "{username}님이 당신을 FluffyChat에 초대했습니다.\n1. FluffyChat 설치: https://fluffychat.im \n2. 가입하거나 로그인 \n3. 초대 링크 열기: \n {link}",
+    "inviteText": "{username}님이 당신을 FluffyChat에 초대했습니다.\n1. Efael 설치: https://efael.uz \n2. 가입하거나 로그인 \n3. 초대 링크 열기: \n {link}",
     "@inviteText": {
         "type": "String",
         "placeholders": {
@@ -2308,7 +2308,7 @@
     "@unbanUserDescription": {},
     "youRejectedTheInvitation": "초대를 거부했습니다",
     "@youRejectedTheInvitation": {},
-    "otherCallingPermissions": "마이크, 카메라 그리고 다름 FluffyChat 권한",
+    "otherCallingPermissions": "마이크, 카메라 그리고 다름 Efael 권한",
     "@otherCallingPermissions": {},
     "messagesStyle": "메세지:",
     "@messagesStyle": {},

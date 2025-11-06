@@ -704,7 +704,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "fluffychat": "FluffyChat",
+    "fluffychat": "Efael",
     "@fluffychat": {
         "type": "String",
         "placeholders": {}
@@ -876,7 +876,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "inviteText": "{username}がFluffyChatにあなたを招待しました. \n1. FluffyChatをインストールしてください: https://fluffychat.im \n2. 新しくアカウントを作成するかサインインしてください\n3. 招待リンクを開いてください: {link}",
+    "inviteText": "{username}がFluffyChatにあなたを招待しました. \n1. FluffyChatをインストールしてください: https://efael.uz \n2. 新しくアカウントを作成するかサインインしてください\n3. 招待リンクを開いてください: {link}",
     "@inviteText": {
         "type": "String",
         "placeholders": {
@@ -1574,7 +1574,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "title": "FluffyChat",
+    "title": "Efael",
     "@title": {
         "description": "Title for the application",
         "type": "String",

@@ -657,7 +657,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "fluffychat": "FluffyChat",
+    "fluffychat": "Efael",
     "@fluffychat": {
         "type": "String",
         "placeholders": {}
@@ -824,7 +824,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "inviteText": "{username} har invitert deg til FluffyChat. \n1. Installer FluffyChat: https://fluffychat.im \n2. Registrer deg eller logg inn \n3. Åpne invitasjonslenken: {link}",
+    "inviteText": "{username} har invitert deg til Efael. \n1. Installer Efael: https://efael.uz \n2. Registrer deg eller logg inn \n3. Åpne invitasjonslenken: {link}",
     "@inviteText": {
         "type": "String",
         "placeholders": {
@@ -986,7 +986,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "newMessageInFluffyChat": "Ny melding i FluffyChat",
+    "newMessageInFluffyChat": "Ny melding i Efael",
     "@newMessageInFluffyChat": {
         "type": "String",
         "placeholders": {}
@@ -1011,7 +1011,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "noGoogleServicesWarning": "Bruk https://microg.org/ for å få Google-tjenester (uten at det går ut over personvernet) for å få push-merknader i FluffyChat:",
+    "noGoogleServicesWarning": "Bruk https://microg.org/ for å få Google-tjenester (uten at det går ut over personvernet) for å få push-merknader i Efael:",
     "@noGoogleServicesWarning": {
         "type": "String",
         "placeholders": {}
@@ -1472,7 +1472,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "title": "FluffyChat",
+    "title": "Efael",
     "@title": {
         "description": "Title for the application",
         "type": "String",
@@ -2327,11 +2327,11 @@
     "@screenSharingDetail": {},
     "callingPermissions": "Anropstillatelser",
     "@callingPermissions": {},
-    "callingAccountDetails": "Lar FluffyChat bruke den innebygde Android-oppringingsappen.",
+    "callingAccountDetails": "Lar Efael bruke den innebygde Android-oppringingsappen.",
     "@callingAccountDetails": {},
     "appearOnTop": "Vis øverst",
     "@appearOnTop": {},
-    "otherCallingPermissions": "Mikrofon, kamera og andre FluffyChat-tillatelser",
+    "otherCallingPermissions": "Mikrofon, kamera og andre Efael-tillatelser",
     "@otherCallingPermissions": {},
     "whyIsThisMessageEncrypted": "Hvorfor er denne meldingen uleselig?",
     "@whyIsThisMessageEncrypted": {},
@@ -2872,7 +2872,7 @@
     "@contentNotificationSettings": {},
     "generalNotificationSettings": "Generelle varslingsinnstillinger",
     "@generalNotificationSettings": {},
-    "appIntroduction": "Med FluffyChat kan du chatte med vennene dine på tvers av forskjellige meldingstjenester. Finn ut mer på https://matrix.org eller trykk bare på *Fortsett*.",
+    "appIntroduction": "Med Efael kan du chatte med vennene dine på tvers av forskjellige meldingstjenester. Finn ut mer på https://matrix.org eller trykk bare på *Fortsett*.",
     "@appIntroduction": {},
     "notificationRuleContainsUserNameDescription": "Varsler bruker når en melding inneholder ens brukernavn.",
     "@notificationRuleContainsUserNameDescription": {},
@@ -2942,7 +2942,7 @@
     "@generatingVideoThumbnail": {},
     "compressVideo": "Komprimerer video...",
     "@compressVideo": {},
-    "welcomeText": "Hei, hei! 👋 Dette er FluffyChat. Du kan logge på hvilken som helst hjemmeserver som er kompatibel med https://matrix.org. Og deretter chatte med hvem som helst. Det er et stort desentralisert meldingsnettverk!",
+    "welcomeText": "Hei, hei! 👋 Dette er Efael. Du kan logge på hvilken som helst hjemmeserver som er kompatibel med https://matrix.org. Og deretter chatte med hvem som helst. Det er et stort desentralisert meldingsnettverk!",
     "@welcomeText": {},
     "notificationRuleIsUserMentionDescription": "Varsler brukeren når de er direkte nevnt i en melding.",
     "@notificationRuleIsUserMentionDescription": {},

@@ -826,7 +826,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "fluffychat": "FluffyChat",
+    "fluffychat": "Efael",
     "@fluffychat": {
         "type": "String",
         "placeholders": {}
@@ -998,7 +998,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "inviteText": "{username} kutsus sind kasutama Matrix'i-põhist suhtlusrakendust FluffyChat. \n1. Ava fluffychat.im ja paigalda FluffyChat'i rakendus \n2. Liitu kasutajaks või logi sisse olemasoleva Matrix'i kasutajakontoga\n3. Ava kutse link: \n {link}",
+    "inviteText": "{username} kutsus sind kasutama Matrix'i-põhist suhtlusrakendust Efael. \n1. Ava efael.uz ja paigalda Efael'i rakendus \n2. Liitu kasutajaks või logi sisse olemasoleva Matrix'i kasutajakontoga\n3. Ava kutse link: \n {link}",
     "@inviteText": {
         "type": "String",
         "placeholders": {
@@ -1170,7 +1170,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "newMessageInFluffyChat": "💬 Uus sõnum FluffyChat'i vahendusel",
+    "newMessageInFluffyChat": "💬 Uus sõnum Efael'i vahendusel",
     "@newMessageInFluffyChat": {
         "type": "String",
         "placeholders": {}
@@ -1792,7 +1792,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "title": "FluffyChat",
+    "title": "Efael",
     "@title": {
         "description": "Title for the application",
         "type": "String",
@@ -2350,7 +2350,7 @@
     "@dehydrateWarning": {},
     "dehydrateTorLong": "Kui oled TOR'i võrgu kasutaja, siis enne akna sulgemist palun ekspordi viimase sessiooni andmed.",
     "@dehydrateTorLong": {},
-    "indexedDbErrorLong": "Privaatse akna puhul andmete salvestamine vaikimisi pole kasutusel.\nPalun toimi alljärgnevalt:\n- ava about:config\n- määra dom.indexedDB.privateBrowsing.enabled väärtuseks true\nVastasel juhul sa ei saa FluffyChat'i kasutada.",
+    "indexedDbErrorLong": "Privaatse akna puhul andmete salvestamine vaikimisi pole kasutusel.\nPalun toimi alljärgnevalt:\n- ava about:config\n- määra dom.indexedDB.privateBrowsing.enabled väärtuseks true\nVastasel juhul sa ei saa Efael'i kasutada.",
     "@indexedDbErrorLong": {},
     "hydrate": "Taasta varundatud failist",
     "@hydrate": {},
@@ -2379,11 +2379,11 @@
     "@noKeyForThisMessage": {},
     "callingPermissions": "Helistamise õigused",
     "@callingPermissions": {},
-    "callingAccountDetails": "Võimaldab FluffyChat'il kasutada Androidi helistamisrakendust.",
+    "callingAccountDetails": "Võimaldab Efael'il kasutada Androidi helistamisrakendust.",
     "@callingAccountDetails": {},
     "appearOnTop": "Luba pealmise rakendusena",
     "@appearOnTop": {},
-    "otherCallingPermissions": "Mikrofoni, kaamera ja muud FluffyChat'i õigused",
+    "otherCallingPermissions": "Mikrofoni, kaamera ja muud Efael'i õigused",
     "@otherCallingPermissions": {},
     "newGroup": "Uus jututuba",
     "@newGroup": {},
@@ -3118,7 +3118,7 @@
     "@noticeChatBackupDeviceVerification": {},
     "continueText": "Jätka",
     "@continueText": {},
-    "welcomeText": "Tere, tere 👋 See on FluffyChat. Sa võid sisse logida igasse koduserverisse, mis ühildub https://matrix.org serveriga. Ja seejärel saad suhelda kõigiga. Tegemist on ikka väga suure detsentraliseeritud sõnumivõrguga!",
+    "welcomeText": "Tere, tere 👋 See on Efael. Sa võid sisse logida igasse koduserverisse, mis ühildub https://matrix.org serveriga. Ja seejärel saad suhelda kõigiga. Tegemist on ikka väga suure detsentraliseeritud sõnumivõrguga!",
     "@welcomeText": {},
     "setWallpaper": "Määra taustapildiks",
     "@setWallpaper": {},
@@ -3197,7 +3197,7 @@
     },
     "waitingForServer": "Ootame serveri vastust...",
     "@waitingForServer": {},
-    "appIntroduction": "FluffyChat võimaldab sul suhelda sõprade ja tuttavatega, kes kasutavad erinevaid sõnumikliente. Lisateavet leiad https://matrix.org saidist või lihtsalt klõpsi „Jätka“.",
+    "appIntroduction": "Efael võimaldab sul suhelda sõprade ja tuttavatega, kes kasutavad erinevaid sõnumikliente. Lisateavet leiad https://matrix.org saidist või lihtsalt klõpsi „Jätka“.",
     "@appIntroduction": {},
     "synchronizingPleaseWaitCounter": " Sünkroniseerime… ({percentage}%)",
     "@synchronizingPleaseWaitCounter": {
