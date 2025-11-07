@@ -22,7 +22,7 @@ enum AppSettings<T> {
   unifiedPushEndpoint<String>('chat.fluffy.unifiedpush.endpoint', ''),
   pushNotificationsGatewayUrl<String>(
     'pushNotificationsGatewayUrl',
-    'https://push.fluffychat.im/_matrix/push/v1/notify',
+    'https://matrix.efael.uz/_matrix/push/v1/notify',
   ),
   pushNotificationsPusherFormat<String>(
     'pushNotificationsPusherFormat',
@@ -40,7 +40,7 @@ enum AppSettings<T> {
   sendOnEnter<bool>('chat.fluffy.send_on_enter', false),
   showPresences<bool>('chat.fluffy.show_presences', true),
   displayNavigationRail<bool>('chat.fluffy.display_navigation_rail', false),
-  experimentalVoip<bool>('chat.fluffy.experimental_voip', true),
+  experimentalVoip<bool>('chat.fluffy.experimental_voip', false),
   shareKeysWith<String>('chat.fluffy.share_keys_with_2', 'all'),
   noEncryptionWarningShown<bool>(
     'chat.fluffy.no_encryption_warning_shown',

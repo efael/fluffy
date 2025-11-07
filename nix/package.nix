@@ -5,32 +5,34 @@
   libwebrtc,
   vodozemac,
   packageAttrs,
+  androidCustomPackage,
+  pinnedJDK,
   ...
-}:
-targetFlutterPlatform:
+}: targetFlutterPlatform:
 pinnedFlutter.buildFlutterApplication (
   packageAttrs
   // rec {
-    pname = "fluffychat-${targetFlutterPlatform}";
+    pname = "efael-${targetFlutterPlatform}";
 
     src = ../.;
 
     inherit targetFlutterPlatform;
 
-    meta = {
-      description = "Chat with your friends (matrix client)";
-      homepage = "https://fluffychat.im/";
-      license = pkgs.lib.licenses.agpl3Plus;
-      maintainers = with pkgs.lib.maintainers; [
-        mkg20001
-        tebriel
-        aleksana
-      ];
-      badPlatforms = pkgs.lib.platforms.darwin;
-    }
-    // pkgs.lib.optionalAttrs (targetFlutterPlatform == "linux") {
-      mainProgram = "fluffychat";
-    };
+    meta =
+      {
+        description = "Chat with your friends (matrix client)";
+        homepage = "https://efael.uz/";
+        license = pkgs.lib.licenses.agpl3Plus;
+        maintainers = with pkgs.lib.maintainers; [
+          mkg20001
+          tebriel
+          aleksana
+        ];
+        badPlatforms = pkgs.lib.platforms.darwin;
+      }
+      // pkgs.lib.optionalAttrs (targetFlutterPlatform == "linux") {
+        mainProgram = "efael";
+      };
   }
   // pkgs.lib.optionalAttrs (targetFlutterPlatform == "linux") {
     nativeBuildInputs = [
@@ -38,16 +40,16 @@ pinnedFlutter.buildFlutterApplication (
       pkgs.copyDesktopItems
     ];
 
-    runtimeDependencies = [ pkgs.pulseaudio ];
+    runtimeDependencies = [pkgs.pulseaudio];
 
     env.NIX_LDFLAGS = "-rpath-link ${libwebrtcRpath}";
 
     desktopItems = [
       (pkgs.makeDesktopItem {
-        name = "Fluffychat";
-        exec = "fluffychat";
-        icon = "fluffychat";
-        desktopName = "Fluffychat";
+        name = "Efael";
+        exec = "efael";
+        icon = "efael";
+        desktopName = "Efael";
         genericName = "Chat with your friends (matrix client)";
         categories = [
           "Chat"
@@ -58,12 +60,11 @@ pinnedFlutter.buildFlutterApplication (
     ];
 
     customSourceBuilders = {
-      flutter_webrtc =
-        {
-          version,
-          src,
-          ...
-        }:
+      flutter_webrtc = {
+        version,
+        src,
+        ...
+      }:
         pkgs.stdenv.mkDerivation {
           pname = "flutter_webrtc";
           inherit version src;
@@ -87,7 +88,7 @@ pinnedFlutter.buildFlutterApplication (
     };
 
     postInstall = ''
-      FAV=$out/app/fluffychat-linux/data/flutter_assets/assets/favicon.png
+      FAV=$out/app/efael-linux/data/flutter_assets/assets/favicon.png
       ICO=$out/share/icons
 
       for size in 24 32 42 64 128 256 512; do
@@ -96,12 +97,36 @@ pinnedFlutter.buildFlutterApplication (
         magick $FAV -resize ''${size}x''${size} $D/fluffychat.png
       done
 
-      patchelf --add-rpath ${libwebrtcRpath} $out/app/fluffychat-linux/lib/libwebrtc.so
+      patchelf --add-rpath ${libwebrtcRpath} $out/app/efael-linux/lib/libwebrtc.so
     '';
   }
   // pkgs.lib.optionalAttrs (targetFlutterPlatform == "web") {
     preBuild = ''
       cp -r ${vodozemac}/* ./assets/vodozemac/
+    '';
+  }
+  // pkgs.lib.optionalAttrs (targetFlutterPlatform == "apk") {
+    targetFlutterPlatform = "universal";
+
+    ANDROID_SDK_ROOT = "${androidCustomPackage}/share/android-sdk";
+    JAVA_HOME = pinnedJDK;
+    FLUTTER_ROOT = "${pinnedFlutter}";
+    CHROME_EXECUTABLE = "${pkgs.google-chrome}/bin/google-chrome-stable";
+    GRADLE_OPTS = "-Dorg.gradle.project.android.aapt2FromMavenOverride=${androidCustomPackage}/share/android-sdk/build-tools/35.0.0/aapt2";
+
+    nativeBuildInputs = [
+      androidCustomPackage
+      pinnedJDK
+    ];
+
+    buildPhase = ''
+      runHook preBuild
+
+      mkdir -p build/flutter_assets/fonts
+
+      flutter build apk -v --split-debug-info="$debug" $flutterBuildFlags
+
+      runHook postBuild
     '';
   }
 )

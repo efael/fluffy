@@ -73,3 +73,5 @@ web/pkg/vodozemac_bindings_dart_bg.wasm
 web/pkg/vodozemac_bindings_dart.js
 
 /.direnv
+
+/result

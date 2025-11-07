@@ -102,7 +102,7 @@ slots:
   dbus-svc:
     interface: dbus
     bus: session
-    name: chat.fluffy.fluffychat
+    name: uz.uzinfocom.efael.app
 
 apps:
   fluffychat:

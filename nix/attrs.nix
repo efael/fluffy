@@ -2,8 +2,7 @@
   inputs,
   system,
   ...
-}:
-let
+}: let
   attrs = rec {
     pkgs = import inputs.nixpkgs {
       inherit system;
@@ -11,10 +10,9 @@ let
     };
     formatter = pkgs.alejandra;
     # https://github.com/catppuccin/nix/blob/08716214674ca27914daa52e6fa809cc022b581e/modules/lib/default.nix#L99
-    importYAML =
-      path:
+    importYAML = path:
       pkgs.lib.importJSON (
-        pkgs.runCommand "converted.json" { nativeBuildInputs = [ pkgs.yj ]; } ''
+        pkgs.runCommand "converted.json" {nativeBuildInputs = [pkgs.yj];} ''
           yj < ${path} > $out
         ''
       );
@@ -24,17 +22,21 @@ let
     androidCustomPackage = inputs.android-nixpkgs.sdk.${system} (
       # show all potential values with
       # nix flake show github:tadfisher/android-nixpkgs
-      sdkPkgs: with sdkPkgs; [
-        cmdline-tools-latest
-        # cmake-3-22-1
-        # build-tools-35-0-0
-        # ndk-27-0-12077973
-        # platform-tools
-        # platforms-android-34
-        # emulator
-        # platforms-android-36
-        # system-images-android-36-google-apis-playstore-x86-64
-      ]
+      sdkPkgs:
+        with sdkPkgs; [
+          cmdline-tools-latest
+          cmake-3-22-1
+          build-tools-35-0-0
+          ndk-27-0-12077973
+          # platform-tools
+          # emulator
+          platforms-android-31
+          platforms-android-33
+          platforms-android-34
+          platforms-android-35
+          platforms-android-36
+          # system-images-android-36-google-apis-playstore-x86-64
+        ]
     );
     libwebrtcRpath = pkgs.lib.makeLibraryPath [
       pkgs.libgbm
@@ -88,4 +90,4 @@ let
     vodozemac = import ./vodozemac.nix attrs;
   };
 in
-attrs
+  attrs
