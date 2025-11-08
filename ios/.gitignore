@@ -31,3 +31,5 @@ build/
 !default.mode2v3
 !default.pbxuser
 !default.perspectivev3
+
+Config/Secret.xcconfig
