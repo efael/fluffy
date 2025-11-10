@@ -38,7 +38,6 @@
     packages = eachSystems supportedSystems (args: {
       linux = package args "linux";
       web = package args "web";
-      apk = package args "apk";
     });
     devShells = eachSystems linuxSystems (args: {
       default = import ./nix/shell_linux.nix args.attrs;

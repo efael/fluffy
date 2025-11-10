@@ -1,7 +1,7 @@
-FluffyChat is an open, nonprofit and cute Matrix messenger app for Ubuntu Touch, Android and iOS.
+Efael is an open, nonprofit and cute Matrix messenger app for Ubuntu Touch, Android and iOS.
 
 Open
-Opensource and open development where everyone can join.
+Opensource and open development where everyone can join. Efael based on a FluffyChat messenger.
 
 Nonprofit
 FluffyChat is donation funded.
@@ -13,13 +13,13 @@ One-to-one and group chats
 Unlimited groups and direct chats.
 
 Easy
-FluffyChat is made as simple to use as possible.
+Efael is made as simple to use as possible.
 
 Free
 Free to use for everyone without ads.
 
 Decentralized
-There is no "FluffyChat server" you are forced to use. Use the server you find trustworthy or host your own.
+There is no "Efael server" you are forced to use. Use the server you find trustworthy or host your own.
 
 Compatible
 Compatible with Element, Fractal, Nheko and all Matrix messengers.

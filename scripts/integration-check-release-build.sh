@@ -18,7 +18,7 @@ flutter build apk --release
 
 # install and launch APK
 flutter install
-adb shell am start -n uz.uzinfocom.efael.app/chat.fluffy.fluffychat.MainActivity
+adb shell am start -n uz.uzinfocom.efael.app/uz.uzinfocom.efael.app.MainActivity
 
 sleep 5
 

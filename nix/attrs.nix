@@ -7,6 +7,7 @@
     pkgs = import inputs.nixpkgs {
       inherit system;
       config.allowUnfree = true;
+      config.android_sdk.accept_license = true;
     };
     formatter = pkgs.alejandra;
     # https://github.com/catppuccin/nix/blob/08716214674ca27914daa52e6fa809cc022b581e/modules/lib/default.nix#L99
@@ -32,14 +33,14 @@
           cmake-3-22-1
           build-tools-35-0-0
           ndk-27-0-12077973
-          # platform-tools
-          # emulator
+          platform-tools
+          emulator
           platforms-android-31
           platforms-android-33
           platforms-android-34
           platforms-android-35
           platforms-android-36
-          # system-images-android-36-google-apis-playstore-x86-64
+          system-images-android-36-google-apis-playstore-x86-64
         ]
     );
     libwebrtcRpath = pkgs.lib.makeLibraryPath [
@@ -92,6 +93,29 @@
       };
     };
     vodozemac = import ./vodozemac.nix attrs;
+    androidEmulator = pkgs.androidenv.emulateApp {
+      name = "emulator";
+      platformVersion = "36";
+      abiVersion = "x86_64";
+      systemImageType = "google_apis_playstore";
+      configOptions = {
+        "hw.gpu.enabled" = "yes";
+        "hw.gpu.mode" = "swiftshader_indirect";
+        "hw.keyboard" = "yes";
+        "hw.kainKeys" = "yes";
+      };
+    };
+    androidEmulatorNoGPU = pkgs.androidenv.emulateApp {
+      name = "emulator";
+      platformVersion = "36";
+      abiVersion = "x86_64";
+      systemImageType = "google_apis_playstore";
+      configOptions = {
+        "hw.gpu.enabled" = "yes";
+        "hw.keyboard" = "yes";
+        "hw.kainKeys" = "yes";
+      };
+    };
   };
 in
   attrs

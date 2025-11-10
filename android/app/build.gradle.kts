@@ -50,10 +50,10 @@ android {
 
     signingConfigs {
        create("release") {
-            keyAlias = "dummyAlias"
-            keyPassword = "dummyPassword"
-            storeFile = file("dummy.keystore")
-            storePassword = "dummyStorePassword"
+            keyAlias = "efael"
+            keyPassword = "123456"
+            storeFile = file("efael.keystore")
+            storePassword = "123456"
         }
     }
 
