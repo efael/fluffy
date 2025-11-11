@@ -18,8 +18,8 @@
     ];
 
     darwinSystems = [
-      "x86_64-dawin"
-      "aarch64-dawin"
+      "x86_64-darwin"
+      "aarch64-darwin"
     ];
 
     supportedSystems = linuxSystems ++ darwinSystems;
