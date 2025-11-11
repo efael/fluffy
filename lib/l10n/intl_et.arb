@@ -1361,7 +1361,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "pin": "Klammerda",
+    "pin": "Tõsta esile",
     "@pin": {
         "type": "String",
         "placeholders": {}
@@ -1874,7 +1874,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unpin": "Eemalda klammerdus",
+    "unpin": "Eemalda esiletõstmine",
     "@unpin": {
         "type": "String",
         "placeholders": {}
@@ -2185,9 +2185,9 @@
     "@unsupportedAndroidVersion": {},
     "voiceCall": "Häälkõne",
     "@voiceCall": {},
-    "confirmEventUnpin": "Kas sa oled kindel, et tahad klammerdatud sündmuse eemaldada?",
+    "confirmEventUnpin": "Kas sa oled kindel, et tahad esiletõstetud sündmuse jäädavalt eemaldada?",
     "@confirmEventUnpin": {},
-    "pinMessage": "Klammerda sõnum jututuppa",
+    "pinMessage": "Tõsta sõnum jututoas esile",
     "@pinMessage": {},
     "videoCallsBetaWarning": "Palun arvesta, et videokõned on veel beetajärgus. Nad ei pruugi veel toimida kõikidel platvormidel korrektselt.",
     "@videoCallsBetaWarning": {},
@@ -3432,5 +3432,60 @@
         }
     },
     "donate": "Toeta meid rahaliselt",
-    "@donate": {}
+    "@donate": {},
+    "startedAPoll": "{username} koostas küsitluse.",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
+    "poll": "Küsitlus",
+    "@poll": {},
+    "startPoll": "Koosta küsitlus",
+    "@startPoll": {},
+    "endPoll": "Lõpeta küsitlus",
+    "@endPoll": {},
+    "answersVisible": "Vastused on näha",
+    "@answersVisible": {},
+    "answersHidden": "Vastused on peidetud",
+    "@answersHidden": {},
+    "pollQuestion": "Küsitluse küsimus",
+    "@pollQuestion": {},
+    "answerOption": "Valikvastus",
+    "@answerOption": {},
+    "addAnswerOption": "Lisa valikvastus",
+    "@addAnswerOption": {},
+    "allowMultipleAnswers": "Luba mitu vastusevalikut",
+    "@allowMultipleAnswers": {},
+    "pollHasBeenEnded": "Küsitlus on lõppenud",
+    "@pollHasBeenEnded": {},
+    "countVotes": "{count, plural, =1{Üks hääl} other{{count} häält}}",
+    "@countVotes": {
+        "type": "int",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "answersWillBeVisibleWhenPollHasEnded": "Vastused on näha küsitluse lõppedes",
+    "@answersWillBeVisibleWhenPollHasEnded": {},
+    "replyInThread": "Vasta jutulõngas",
+    "@replyInThread": {},
+    "countReplies": "{count, plural, =1{Üks vastus} other{{count} vastust}}",
+    "@countReplies": {
+        "type": "int",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "thread": "Jutulõng",
+    "@thread": {},
+    "backToMainChat": "Tagasi põhivestlusesse",
+    "@backToMainChat": {}
 }

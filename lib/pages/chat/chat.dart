@@ -20,7 +20,9 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat_view.dart';
 import 'package:fluffychat/pages/chat/event_info_dialog.dart';
+import 'package:fluffychat/pages/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
+import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/event_extension.dart';
@@ -100,6 +102,8 @@ class ChatController extends State<ChatPageWithRoom>
 
   Timeline? timeline;
 
+  String? activeThreadId;
+
   late final String readMarkerEventId;
 
   String get roomId => widget.room.id;
@@ -128,6 +132,8 @@ class ChatController extends State<ChatPageWithRoom>
         files: details.files,
         room: room,
         outerContext: context,
+        threadRootEventId: activeThreadId,
+        threadLastEventId: threadLastEventId,
       ),
     );
   }
@@ -164,6 +170,25 @@ class ChatController extends State<ChatPageWithRoom>
   String pendingText = '';
 
   bool showEmojiPicker = false;
+
+  String? get threadLastEventId {
+    final threadId = activeThreadId;
+    if (threadId == null) return null;
+    return timeline?.events
+        .filterByVisibleInGui(threadId: threadId)
+        .firstOrNull
+        ?.eventId;
+  }
+
+  void enterThread(String eventId) => setState(() {
+        activeThreadId = eventId;
+        selectedEvents.clear();
+      });
+
+  void closeThread() => setState(() {
+        activeThreadId = null;
+        selectedEvents.clear();
+      });
 
   void recreateChat() async {
     final room = this.room;
@@ -265,6 +290,8 @@ class ChatController extends State<ChatPageWithRoom>
         files: files,
         room: room,
         outerContext: context,
+        threadRootEventId: activeThreadId,
+        threadLastEventId: threadLastEventId,
       ),
     );
   }
@@ -327,7 +354,12 @@ class ChatController extends State<ChatPageWithRoom>
     );
 
     sendingClient = Matrix.of(context).client;
-    readMarkerEventId = room.hasNewMessages ? room.fullyRead : '';
+    final lastEventThreadId =
+        room.lastEvent?.relationshipType == RelationshipTypes.thread
+            ? room.lastEvent?.relationshipEventId
+            : null;
+    readMarkerEventId =
+        room.hasNewMessages ? lastEventThreadId ?? room.fullyRead : '';
     WidgetsBinding.instance.addObserver(this);
     _tryLoadTimeline();
     if (kIsWeb) {
@@ -338,7 +370,9 @@ class ChatController extends State<ChatPageWithRoom>
   final Set<String> expandedEventIds = {};
 
   void expandEventsFrom(Event event, bool expand) {
-    final events = timeline!.events.filterByVisibleInGui();
+    final events = timeline!.events.filterByVisibleInGui(
+      threadId: activeThreadId,
+    );
     final start = events.indexOf(event);
     setState(() {
       for (var i = start; i < events.length; i++) {
@@ -358,13 +392,18 @@ class ChatController extends State<ChatPageWithRoom>
     loadTimelineFuture = _getTimeline();
     try {
       await loadTimelineFuture;
-      if (initialEventId != null) scrollToEventId(initialEventId);
+      // We launched the chat with a given initial event ID:
+      if (initialEventId != null) {
+        scrollToEventId(initialEventId);
+        return;
+      }
 
       var readMarkerEventIndex = readMarkerEventId.isEmpty
           ? -1
           : timeline!.events
               .filterByVisibleInGui(
                 exceptionEventId: readMarkerEventId,
+                threadId: activeThreadId,
               )
               .indexWhere((e) => e.eventId == readMarkerEventId);
 
@@ -375,6 +414,7 @@ class ChatController extends State<ChatPageWithRoom>
         readMarkerEventIndex = timeline!.events
             .filterByVisibleInGui(
               exceptionEventId: readMarkerEventId,
+              threadId: activeThreadId,
             )
             .indexWhere((e) => e.eventId == readMarkerEventId);
       }
@@ -569,6 +609,7 @@ class ChatController extends State<ChatPageWithRoom>
       inReplyTo: replyEvent,
       editEventId: editEvent?.eventId,
       parseCommands: parseCommands,
+      threadRootEventId: activeThreadId,
     );
     sendController.value = TextEditingValue(
       text: pendingText,
@@ -597,6 +638,8 @@ class ChatController extends State<ChatPageWithRoom>
         files: files,
         room: room,
         outerContext: context,
+        threadRootEventId: activeThreadId,
+        threadLastEventId: threadLastEventId,
       ),
     );
   }
@@ -609,6 +652,8 @@ class ChatController extends State<ChatPageWithRoom>
         files: [XFile.fromData(image)],
         room: room,
         outerContext: context,
+        threadRootEventId: activeThreadId,
+        threadLastEventId: threadLastEventId,
       ),
     );
   }
@@ -625,6 +670,8 @@ class ChatController extends State<ChatPageWithRoom>
         files: [file],
         room: room,
         outerContext: context,
+        threadRootEventId: activeThreadId,
+        threadLastEventId: threadLastEventId,
       ),
     );
   }
@@ -644,6 +691,8 @@ class ChatController extends State<ChatPageWithRoom>
         files: [file],
         room: room,
         outerContext: context,
+        threadRootEventId: activeThreadId,
+        threadLastEventId: threadLastEventId,
       ),
     );
   }
@@ -675,6 +724,7 @@ class ChatController extends State<ChatPageWithRoom>
     room.sendFileEvent(
       file,
       inReplyTo: replyEvent,
+      threadRootEventId: activeThreadId,
       extraContent: {
         'info': {
           ...file.info,
@@ -893,7 +943,8 @@ class ChatController extends State<ChatPageWithRoom>
     if (isArchived ||
         !room.canChangeStateEvent(EventTypes.RoomPinnedEvents) ||
         selectedEvents.length != 1 ||
-        !selectedEvents.single.status.isSent) {
+        !selectedEvents.single.status.isSent ||
+        activeThreadId != null) {
       return false;
     }
     return true;
@@ -964,6 +1015,7 @@ class ChatController extends State<ChatPageWithRoom>
         : timeline!.events
             .filterByVisibleInGui(
               exceptionEventId: eventId,
+              threadId: activeThreadId,
             )
             .indexOf(foundEvent);
 
@@ -1138,26 +1190,34 @@ class ChatController extends State<ChatPageWithRoom>
     FocusScope.of(context).requestFocus(inputFocus);
   }
 
-  void onAddPopupMenuButtonSelected(String choice) {
-    room.client.getConfig(); // Preload server file configuration.
+  void onAddPopupMenuButtonSelected(AddPopupMenuActions choice) {
+    room.client.getConfig();
 
-    if (choice == 'file') {
-      sendFileAction();
-    }
-    if (choice == 'image') {
-      sendFileAction(type: FileSelectorType.images);
-    }
-    if (choice == 'video') {
-      sendFileAction(type: FileSelectorType.videos);
-    }
-    if (choice == 'camera') {
-      openCameraAction();
-    }
-    if (choice == 'camera-video') {
-      openVideoCameraAction();
-    }
-    if (choice == 'location') {
-      sendLocationAction();
+    switch (choice) {
+      case AddPopupMenuActions.image:
+        sendFileAction(type: FileSelectorType.images);
+        return;
+      case AddPopupMenuActions.video:
+        sendFileAction(type: FileSelectorType.videos);
+        return;
+      case AddPopupMenuActions.file:
+        sendFileAction();
+        return;
+      case AddPopupMenuActions.poll:
+        showAdaptiveBottomSheet(
+          context: context,
+          builder: (context) => StartPollBottomSheet(room: room),
+        );
+        return;
+      case AddPopupMenuActions.photoCamera:
+        openCameraAction();
+        return;
+      case AddPopupMenuActions.videoCamera:
+        openVideoCameraAction();
+        return;
+      case AddPopupMenuActions.location:
+        sendLocationAction();
+        return;
     }
   }
 
@@ -1357,4 +1417,14 @@ class ChatController extends State<ChatPageWithRoom>
       ],
     );
   }
+}
+
+enum AddPopupMenuActions {
+  image,
+  video,
+  file,
+  poll,
+  photoCamera,
+  videoCamera,
+  location,
 }

@@ -5,9 +5,22 @@ import 'package:fluffychat/config/setting_keys.dart';
 extension VisibleInGuiExtension on List<Event> {
   List<Event> filterByVisibleInGui({
     String? exceptionEventId,
+    String? threadId,
   }) =>
       where(
-        (event) => event.isVisibleInGui || event.eventId == exceptionEventId,
+        (event) {
+          if (threadId != null &&
+              event.relationshipType != RelationshipTypes.reaction) {
+            if ((event.relationshipType != RelationshipTypes.thread ||
+                    event.relationshipEventId != threadId) &&
+                event.eventId != threadId) {
+              return false;
+            }
+          } else if (event.relationshipType == RelationshipTypes.thread) {
+            return false;
+          }
+          return event.isVisibleInGui || event.eventId == exceptionEventId;
+        },
       ).toList();
 }
 
@@ -16,8 +29,8 @@ extension IsStateExtension on Event {
       // always filter out edit and reaction relationships
       !{RelationshipTypes.edit, RelationshipTypes.reaction}
           .contains(relationshipType) &&
-      // always filter out m.key.* events
-      !type.startsWith('m.key.verification.') &&
+      // always filter out m.key.* and other known but unimportant events
+      !isKnownHiddenStates &&
       // event types to hide: redaction and reaction events
       // if a reaction has been redacted we also want it to be hidden in the timeline
       !{EventTypes.Reaction, EventTypes.Redaction}.contains(type) &&
@@ -39,4 +52,10 @@ extension IsStateExtension on Event {
         EventTypes.RoomCreate,
         EventTypes.RoomTombstone,
       }.contains(type);
+
+  bool get isKnownHiddenStates =>
+      {
+        PollEventContent.responseType,
+      }.contains(type) ||
+      type.startsWith('m.key.verification.');
 }

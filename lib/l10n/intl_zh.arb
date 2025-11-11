@@ -3432,5 +3432,60 @@
         }
     },
     "donate": "捐赠",
-    "@donate": {}
+    "@donate": {},
+    "startedAPoll": "{username} 启动了投票。",
+    "@startedAPoll": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
+    "poll": "投票",
+    "@poll": {},
+    "startPoll": "启动投票",
+    "@startPoll": {},
+    "endPoll": "结束投票",
+    "@endPoll": {},
+    "answersVisible": "结果可见",
+    "@answersVisible": {},
+    "answersHidden": "结果隐藏",
+    "@answersHidden": {},
+    "pollQuestion": "投票问题",
+    "@pollQuestion": {},
+    "answerOption": "结果选项",
+    "@answerOption": {},
+    "addAnswerOption": "添加结果选项",
+    "@addAnswerOption": {},
+    "allowMultipleAnswers": "允许多个结果",
+    "@allowMultipleAnswers": {},
+    "pollHasBeenEnded": "投票已结束",
+    "@pollHasBeenEnded": {},
+    "countVotes": "{count, plural, =1{票} other{{count} 票}}",
+    "@countVotes": {
+        "type": "int",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "answersWillBeVisibleWhenPollHasEnded": "投票结束后将显示结果",
+    "@answersWillBeVisibleWhenPollHasEnded": {},
+    "thread": "嘟文串",
+    "@thread": {},
+    "replyInThread": "在嘟文串中回复",
+    "@replyInThread": {},
+    "countReplies": "{count, plural, =1{则回复} other{{count} 则回复}}",
+    "@countReplies": {
+        "type": "int",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "backToMainChat": "返回主聊天",
+    "@backToMainChat": {}
 }
